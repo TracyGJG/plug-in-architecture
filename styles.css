@@ -1,5 +1,17 @@
+main {
+	width: 600px;
+	margin: auto;
+	padding: 0.5rem;
+	box-sizing: border-box;
+}
+
 section {
 	margin-block: 2rem;
+}
+
+label > span {
+	display: inline-block;
+	padding-right: 1rem;
 }
 
 #inputs {
