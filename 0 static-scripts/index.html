@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Injection Example</title>
+    <link href="../styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <h1>DOM Injection Example</h1>
+    <section id="inputs">
+        <label for="num1">
+            <span>NUM1</span>
+            <input type="text" id="num1" value='14' />
+        </label>
+        <label for="num2">
+            <span>NUM2</span>
+            <input type="text" id="num2" value='3' />
+        </label>
+    </section>
+    <section>
+        <span id="buttons"></span>
+    </section>
+    <section>
+        <div id="divResult"></div>
+    </section>
+
+    <script src="script.js"></script>
+
+    <script src="../plugins/addition.js"></script>
+    <script>
+        createButton('Addition', calc);
+    </script>
+
+    <script src="../plugins/subtraction.js"></script>
+    <script>
+        createButton('Subtraction', calc);
+    </script>
+
+    <script src="../plugins/multiplication.js"></script>
+    <script>
+        createButton('Multiplication', calc);
+    </script>
+
+    <script src="../plugins/division.js"></script>
+    <script>
+        createButton('Division', calc);
+    </script>
+</body>
+
+</html>
