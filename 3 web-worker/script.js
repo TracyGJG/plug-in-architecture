@@ -9,9 +9,7 @@ WebWorker.onmessage = e => {
 	divResult.textContent = result;
 };
 
-buttons.innerHTML = Object.keys(manifest)
-	.map(btnText => `<button data-func="${btnText}">${btnText}</button>`)
-	.join('');
+buttons.innerHTML = Object.keys(manifest).map(createButton).join('');
 
 buttons.addEventListener('click', evt => {
 	WebWorker.postMessage({
@@ -20,3 +18,7 @@ buttons.addEventListener('click', evt => {
 		num2: +num2.value,
 	});
 });
+
+function createButton(btnText) {
+	return `<button data-func="${btnText}">${btnText}</button>`;
+}

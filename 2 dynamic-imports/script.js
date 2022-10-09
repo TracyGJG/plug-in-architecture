@@ -1,11 +1,11 @@
 import manifest from '../plugins/manifest.json' assert { type: 'json' };
 
-Object.entries(manifest).forEach(async ([btnText, { plugin }]) => {
-	console.log(`Loading ${btnText} plugin`);
-	const module = await import(`../modules/${plugin}`);
-	manifest[btnText].script = module.calc;
-	buttons.innerHTML += `<button data-func="${btnText}">${btnText}</button>`;
-});
+buttons.innerHTML = Object.entries(manifest)
+	.map(([btnText, { plugin }]) => {
+		importModule(btnText, plugin);
+		return createButton(btnText);
+	})
+	.join('');
 
 buttons.addEventListener('click', evt => {
 	divResult.textContent = manifest[evt.target.textContent].script(
@@ -13,3 +13,13 @@ buttons.addEventListener('click', evt => {
 		+num2.value
 	);
 });
+
+function createButton(btnText) {
+	return `<button data-func="${btnText}">${btnText}</button>`;
+}
+
+async function importModule(operationText, plugin) {
+	console.log(`Loading ${operationText} plugin`);
+	const module = await import(`../modules/${plugin}`);
+	manifest[operationText].script = module.calc;
+}
